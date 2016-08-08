@@ -1,6 +1,8 @@
 var comment = require('express').Router();
 var connection = require('.././database/db');
 
+module.exports = comment;
+
 comment.route('/comment')
   .get(function(req,res){
     connection.query('SELECT * FROM comments', function(err, rows, fields) {
@@ -15,6 +17,7 @@ comment.route('/comment')
     var author = req.body.author;
     var text = req.body.text;
     connection.query('INSERT INTO comments (`author`,`text`) VALUES (?,?) ',[author,text], function(err, rows, fields) {
+      console.log(connection);
       if (err) {
         res.json(err);
       } else {
@@ -57,4 +60,4 @@ comment.route('/comment/:id')
     })
   });
 
-module.exports = comment;
+

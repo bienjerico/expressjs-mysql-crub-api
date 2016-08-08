@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 // middleware
 app.set('port', (process.env.PORT || 3002));
